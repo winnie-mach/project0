@@ -1,14 +1,23 @@
+h1 {
+  text-align: center;
+}
+
 .gameboard {
-  background-color: pink;
+  background-color: purple;
   max-width: 970px;
   height: 970px;
   margin: 0 auto;
 }
 
-.squares {
+.square {
   display: inline-block;
-  background-color: red;
+  background-color: pink;
   width: 320px;
   height: 320px;
   margin: 0 auto;
+  overflow: hidden;
+  font-size: 10em;
+  text-align: center;
+  line-height: 300px;
+
 }
