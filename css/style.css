@@ -30,8 +30,8 @@ h1 {
 
 .gameboard {
   background-color: #b782c0;
-  max-width: 500px;
-  height: 500px;
+  max-width: 503px;
+  height: 503px;
   margin: 0 auto;
   box-shadow: 10px 10px grey;
 }
@@ -47,8 +47,14 @@ h1 {
   font-size: 10em;
   text-align: center;
   line-height: 140px;
-
 }
+
+.square:hover {
+  width: 165px;
+  height: 163px;
+  transform: 2s; 
+}
+
 .winnerAlertBox {
   background-color: rgba(255,255,255, 0.7); /*ensures that the opacity doesn't change for all it's children */
   bottom: 310px;
@@ -60,7 +66,7 @@ h1 {
   font-size: 5em;
   font-family: 'Days One', sans-serif;
   letter-spacing: -6px;
-  /*text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
+  text-shadow: -1px 0 #9c9896, 0 1px #9c9896, 1px 0 #9c9896, 0 -1px #9c9896;
   color: #c4c1c0;
 
 }

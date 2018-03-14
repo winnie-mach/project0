@@ -77,7 +77,7 @@ const resetGame = function () {
 
 $('.square').on('click', function () {
   if (alreadyClicked(this) === true) {
-    console.log('Box already clicked *some vibrate animation lol*');
+    alert('Box already clicked *some vibrate animation lol*');
   } else {
   playTurn();
   $(this).text(marker);
@@ -98,8 +98,10 @@ $('.square').on('click', function () {
 //Draw: If all boxes are assigned a value and none of the winning conditions are met, result = draw. DONE!!
 //Stop players from reclicking square: if square already has a value, make it unclickable/alert. DONE!!!
 //If game already won, make all squares unclickable
-//Scoring.
+//Display turns: which player is playing
+//Scoring
 
 
 //Test Cases:
 //What if user clicks button again?
+//What if user continues to click on empty squares after the game has been won? -- need to fix. Nothing will happen but what if other play wins? Will show up twice. 
