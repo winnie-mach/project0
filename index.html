@@ -2,13 +2,15 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Londrina+Sketch" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <title>Tic Tac Toe</title>
 
   </head>
   <body>
     <div class="container">
-      <h1>Tic Tac Toe Mang</h1>
+      <h1>Tic Tac Toe</h1>
       <div class="gameboard">
         <div class="square" id="square1"></div>
         <div class="square" id="square2"></div>
@@ -20,6 +22,12 @@
         <div class="square" id="square8"></div>
         <div class="square" id="square9"></div>
     </div>
+    <div class="winnerAlertBox">
+      <p class="winnerAlert player1Win">Player One Wins</p>
+      <p class="winnerAlert player2Win">Player Two Wins</p>
+      <p class="winnerAlert noOneWin">No One Wins</p>
+    </div>
+    <button class="playAgain">Play Again!</button>
     <script src="js/jquery.js"></script>
     <script src="js/main.js"></script>
   </body>

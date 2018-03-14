@@ -1,8 +1,11 @@
 let playerOneisNext = true;
 let marker;
-let result;
 let turn = 0;
+let result;
 
+const alreadyClicked = function () {
+  if ($(this).text() === marker) {}
+}
 const checkForWinner = function () {
   if($('#square1').text() === 'x' && $('#square2').text() === 'x' &&    $('#square3').text() === 'x' ||
      $('#square4').text() === 'x' && $('#square5').text() === 'x' && $('#square6').text() === 'x' ||
@@ -44,7 +47,7 @@ const playTurn = function () {
 };
 
 const checkDraw = function () {
-  if(turn === 9) {
+  if(turn >= 9) {
     // and no winning condition is found
     result = 'draw'
   }
@@ -52,12 +55,18 @@ const checkDraw = function () {
 
 const winnerAlert = function() {
   if(result === 1) {
-    alert('Player One Wins');
+    $('.player1Win').show();
   } else if(result === 2) {
-    alert('Player Two Wins');
+    $('.player2Win').show();
   } else if(result === 'draw') {
-    alert('No one wins');
+    $('.noOneWin').show();
   }
+};
+
+const resetGame = function () {
+  $('.playAgain').on('click', function() {
+    location.reload(true); //reloads the page.
+  })
 };
 
 $('.square').on('click', function () {
@@ -66,6 +75,7 @@ $('.square').on('click', function () {
   checkForWinner();
   checkDraw();
   winnerAlert();
+  resetGame();
 });
 
 
