@@ -10,7 +10,7 @@ body {
   background-image: url("images/bg.jpg");
   background-repeat: repeat;
   width: 100%;
-  height: 100%;
+  height: auto;
   margin: 0;
   padding: 0;
   position: relative;
@@ -19,16 +19,17 @@ body {
 
 h1 {
   margin: 0;
-  padding: 1em 0em 0.5em 0em;
+  padding: .4em 0em .2em 0em;
   font-family: 'Rubik', sans-serif;
-  font-size: 4em;
+  text-shadow: -6px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  font-size: 6em;
   font-weight: 900;
   text-align: center;
-  color: #718cee; /*#f68787;*/
+  color: #2572d0;
 }
 
 .gameboard {
-  background-color: purple;
+  background-color: #b782c0;
   max-width: 500px;
   height: 500px;
   margin: 0 auto;
@@ -49,15 +50,19 @@ h1 {
 
 }
 .winnerAlertBox {
-  background-color: rgba(255,255,255, 0.5); /*ensures that the opacity doesn't change for all it's children */
-  bottom: 255px;
+  background-color: rgba(255,255,255, 0.7); /*ensures that the opacity doesn't change for all it's children */
+  bottom: 310px;
   position: absolute; /* position sets type to relative or absolute, then need to use left, right, bottom, top etc to move it to position. */
   width: 100%;
 }
 .winnerAlert {
   margin: 30px;
   font-size: 5em;
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Days One', sans-serif;
+  letter-spacing: -6px;
+  /*text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
+  color: #c4c1c0;
+
 }
 
 .player1Win {
@@ -79,7 +84,7 @@ h1 {
   background-image: linear-gradient(to bottom, #8fb3e5, #d1a6e7);
   border-radius: 60px;
   box-shadow: 2px 6px 6px #666666;
-  font-family: Arial;
+  font-family: 'Rubik', sans-serif;
   color: #ffffff;
   font-size: 20px;
   padding: 10px 20px 10px 20px;
@@ -92,3 +97,14 @@ h1 {
   background-image: linear-gradient(to bottom, #d1a6e7, #8fb3e5);
   text-decoration: none;
 }
+
+
+#D4E0FA
+#BCD5F3
+#DDC3E0
+#EECEE5
+#F4DAE3
+#F8E7DF
+#f68787
+#ff915f
+#e7ad92

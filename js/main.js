@@ -3,9 +3,19 @@ let marker;
 let turn = 0;
 let result;
 
-const alreadyClicked = function () {
-  if ($(this).text() === marker) {}
-}
+const alreadyClicked = function (squareThatWasClicked) {
+  if ($(squareThatWasClicked).text() !== "" ) {
+    return true;
+  }
+};
+
+const checkForDraw = function () {
+  if(turn >= 9) {
+    // and no winning condition is found <-- didn't do this because added checkDraw inside my checkForWinner function. Meaning that if it didn't find any winners then it would run the check for draw function.
+    result = 'draw'
+  }
+};
+
 const checkForWinner = function () {
   if($('#square1').text() === 'x' && $('#square2').text() === 'x' &&    $('#square3').text() === 'x' ||
      $('#square4').text() === 'x' && $('#square5').text() === 'x' && $('#square6').text() === 'x' ||
@@ -29,6 +39,8 @@ const checkForWinner = function () {
        result = 2;
        return result;
       }
+
+      checkForDraw(); // this checkForDraw function will only run if niether player1 or player 2 has won. If either player wins, then the function is returned and therefore stopped.
 };
 
 const playTurn = function () {
@@ -44,13 +56,6 @@ const playTurn = function () {
     console.log(turn);
   } // playerOneisNext = !playerOneisNext could write this instead of the two true + false statements
 
-};
-
-const checkDraw = function () {
-  if(turn >= 9) {
-    // and no winning condition is found
-    result = 'draw'
-  }
 };
 
 const winnerAlert = function() {
@@ -69,13 +74,18 @@ const resetGame = function () {
   })
 };
 
+
 $('.square').on('click', function () {
+  if (alreadyClicked(this) === true) {
+    console.log('Box already clicked *some vibrate animation lol*');
+  } else {
   playTurn();
   $(this).text(marker);
   checkForWinner();
-  checkDraw();
   winnerAlert();
   resetGame();
+}
+
 });
 
 
@@ -85,8 +95,11 @@ $('.square').on('click', function () {
 
 
 // TODO:
-//Draw: If all boxes are assigned a value and none of the winning conditions are met, result = draw.
-//Reset button
-//Stop players from reclicking square: if square already has a value, make it unclickable/alert.
+//Draw: If all boxes are assigned a value and none of the winning conditions are met, result = draw. DONE!!
+//Stop players from reclicking square: if square already has a value, make it unclickable/alert. DONE!!!
 //If game already won, make all squares unclickable
 //Scoring.
+
+
+//Test Cases:
+//What if user clicks button again?
