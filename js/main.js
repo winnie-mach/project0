@@ -3,6 +3,8 @@ let marker;
 let turn = 0;
 let result;
 let playerTurn = 'X'
+let player1Score = 0;
+let player2Score = 0;
 
 const alreadyClicked = function (squareThatWasClicked) {
   if ($(squareThatWasClicked).text() !== "" ) {
