@@ -27,25 +27,58 @@ h1 {
   color: #2572d0;
 }
 
-.turnLog {
+#turnLog {
+  background-color: #F8E7DF;
   display: inline-block;
-  width: 100px;
+  width: 150px;
   position: relative;
-  left: -400px;
-  top: 90px;
-  margin: -80px 10px;
-  padding: 0;
+  left: -10%;
+  top: 250px;
+  margin: -80px 0px 0px 20px;
   font-family: 'Rubik', sans-serif;
   color: #f68787;
   font-size: 3em;
+}
+#scoreLogP1 {
+  visibility: visible;
+  background-color: #F8E7DF;
+  display: inline-block;
+  max-width: 270px;
+  max-height: 134px;
+  position: relative;
+  left: 37%;
+  top: 200px;
+  margin: -80px 0px 0px 20px;
+  padding: 10px;
+  font-family: 'Rubik', sans-serif;
+  color: #f68787;
+  font-size: 3em;
+}
+#scoreLogP2 {
+  visibility: visible;
+  background-color: #F8E7DF;
+  display: inline-block;
+  max-width: 270px;
+  max-height: 134px;
+  position: relative;
+  left: 15%;
+  top: 400px;
+  margin: -80px 0px 0px 20px;
+  padding: 10px;
+  font-family: 'Rubik', sans-serif;
+  color: #f68787;
+  font-size: 3em;
+}
+.style {
+  margin: 0;
+  padding: inherit;
 }
 
 #playerTurn {
   left: -50
   top: 300px;
-
-
 }
+
 #gameboard {
   background-color: #b782c0;
   max-width: 503px;

@@ -64,10 +64,10 @@ const playTurn = function () {
 const logTurn = function(turn){
   if(turn % 2 !== 0) {
     playerTurn = 'X';
-    $('#playerTurn').text(playerTurn);
+    $('#turnLog').text(`TURN: ${playerTurn}`);
   } else if(turn % 2 === 0) {
     playerTurn = 'O';
-    $('#playerTurn').text(playerTurn);
+    $('#turnLog').text(`TURN: ${playerTurn}`);
   }
 };
 
@@ -81,6 +81,28 @@ const winnerAlert = function() {
   }
 };
 
+const logScore = function(result) {
+  if (result === 1) {
+    player1Score = player1Score + 1;
+    $('#scoreLogP1').html(`<p>PLAYER X SCORE: ${player1Score}</p>`);
+    let styles1 = {
+        margin: '0',
+        padding: '-10px' //put css edits into an object, assigned variable.
+    };
+    $('#scoreLogP1').find('p').css(styles1); //then passed variable here because couldn't chain the html and css methods for some reason.
+    return player1Score;
+  } else if (result === 2) {
+    player2Score = player2Score + 1;
+    $('#scoreLogP2').html(`<p>PLAYER O SCORE:${player2Score}</p>`);
+    let styles2 = {
+        margin: '0',
+        padding: '-10px'
+    };
+    $('#scoreLogP2').find('p').css(styles2);
+    return player2Score;
+  }
+};
+
 const disableGame = function () {
   if (result !== undefined) {
     $('.square').unbind('click'); //make squares unclickable
@@ -91,7 +113,23 @@ const disableGame = function () {
 
 const resetGame = function () {
   $('.playAgain').on('click', function() {
-    location.reload(true); //reloads the page.
+    //location.reload(true); //reloads the page.
+    playerOneisNext = true;
+    marker = "";
+    turn = 0;
+    result;
+    playerTurn = 'X'
+    player1Score = 0;
+    player2Score = 0;
+    $('.square').text(marker);
+    $('.player1Win').hide();
+    $('.player2Win').hide();
+    $('.noOneWin').hide();
+    $('.square').bind('click');
+    $('#gameboard > div').removeClass('NoHover').addClass('square');
+    $('.playAgain').removeClass('animated infinite flash');
+    logTurn(1);
+// At the point game won't work unless I refresh the page. 
   })
 };
 
@@ -109,6 +147,7 @@ $(document).ready(function() {
       $(this).html(`<div>${marker}</div>`); //to make animation happen on the text inside of the .square, wrapped the text inside .square (the variable marker) in it's own div. Then add the animation class to that div.
       checkForWinner();
       winnerAlert();
+      logScore(result);
       disableGame();
       resetGame();
       }
