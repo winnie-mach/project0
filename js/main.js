@@ -5,6 +5,7 @@ let result;
 let playerTurn = 'X'
 let player1Score = 0;
 let player2Score = 0;
+let gameOver = false; //this controls if the game function will run or not. If gameOver is true, then the game won't run no matter how many times the user clicks on it.
 
 const alreadyClicked = function (squareThatWasClicked) {
   if ($(squareThatWasClicked).text() !== "" ) {
@@ -84,7 +85,7 @@ const winnerAlert = function() {
 const logScore = function(result) {
   if (result === 1) {
     player1Score = player1Score + 1;
-    $('#scoreLogP1').html(`<p>PLAYER X SCORE: ${player1Score}</p>`);
+    $('#scoreLogP1').html(`<p>PLAYER 1 SCORE: ${player1Score}</p>`);
     let styles1 = {
         margin: '0',
         padding: '-10px' //put css edits into an object, assigned variable.
@@ -93,7 +94,7 @@ const logScore = function(result) {
     return player1Score;
   } else if (result === 2) {
     player2Score = player2Score + 1;
-    $('#scoreLogP2').html(`<p>PLAYER O SCORE:${player2Score}</p>`);
+    $('#scoreLogP2').html(`<p>PLAYER 2 SCORE:${player2Score}</p>`);
     let styles2 = {
         margin: '0',
         padding: '-10px'
@@ -105,37 +106,20 @@ const logScore = function(result) {
 
 const disableGame = function () {
   if (result !== undefined) {
-    $('.square').unbind('click'); //make squares unclickable
+    gameOver = true;
+    // $('.square').unbind('click'); //make squares unclickable, opt to retun the function instead so that even if user clicks on it, the function won't run.
     $('#gameboard > div').removeClass('square').addClass('NoHover'); //when addressing a class in the remove/add class methods, do not add . in front of class name. Also, #gameboard > div is a DIRECT child selector, meaning it will only select the divs are that direct children of #gameboard and not the chidren of those divs (i.e. grandchildren of #gameboard).
     $('.playAgain').addClass('animated infinite flash'); //playAgain button flashes
   }
 };
 
-const resetGame = function () {
-  $('.playAgain').on('click', function() {
-    //location.reload(true); //reloads the page.
-    playerOneisNext = true;
-    marker = "";
-    turn = 0;
-    result;
-    playerTurn = 'X'
-    player1Score = 0;
-    player2Score = 0;
-    $('.square').text(marker);
-    $('.player1Win').hide();
-    $('.player2Win').hide();
-    $('.noOneWin').hide();
-    $('.square').bind('click');
-    $('#gameboard > div').removeClass('NoHover').addClass('square');
-    $('.playAgain').removeClass('animated infinite flash');
-    logTurn(1);
-// At the point game won't work unless I refresh the page. 
-  })
-};
-
 $(document).ready(function() {
   logTurn(1);
   $('.square').on('click', function () {
+    if (gameOver === true) {
+      return;
+    }
+    console.log("2nd time click")
     if (alreadyClicked(this) === true) {
       const $marker = $(this).find('div'); //adding the div inside 'this' (the .square user clicks on) into a variable. Because if not, 'this' will not work inside the setTimeout function below due to scope issues.
       $marker.addClass('animated shake');
@@ -149,10 +133,26 @@ $(document).ready(function() {
       winnerAlert();
       logScore(result);
       disableGame();
-      resetGame();
-      }
-
+    }
     });
+
+    $('.playAgain').on('click', function() {
+      //location.reload(true); //reloads the page. Opt to reset manually so my score isn't reset.
+      playerOneisNext = true;
+      marker = "";
+      turn = 0;
+      result = undefined; // b/c disableGame function condition: if result not = undefined.
+      playerTurn = 'X';
+      gameOver = false;
+      $('#gameboard > div').removeClass('NoHover').addClass('square');
+      $('.square').text(marker);
+      $('.player1Win').hide();
+      $('.player2Win').hide();
+      $('.noOneWin').hide();
+      // $('.square').bind('click');
+      $('.playAgain').removeClass('animated infinite flash');
+      logTurn(1);
+  });
 
 });
 
