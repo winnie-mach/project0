@@ -1,4 +1,4 @@
-#Project 0 Tic Tac Toe
+# Project 0 Tic Tac Toe
 
 A simple Tic Tac Toe game that runs from your browser. This is my first project individual project.  
 
