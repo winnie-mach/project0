@@ -68,6 +68,13 @@ const winnerAlert = function() {
   }
 };
 
+const disableGame = function () {
+  if (result !== undefined) {
+    $('.square').unbind('click'); //make squares unclickable
+    $('#gameboard div').removeClass('square').addClass('NoHover'); //when addressing a class in the remove/add class methods, do not add . in front of class name.
+    $('.playAgain').addClass('animated infinite flash'); //playAgain button flashes
+  }
+};
 const resetGame = function () {
   $('.playAgain').on('click', function() {
     location.reload(true); //reloads the page.
@@ -77,12 +84,14 @@ const resetGame = function () {
 
 $('.square').on('click', function () {
   if (alreadyClicked(this) === true) {
-    alert('Box already clicked *some vibrate animation lol*');
+    console.log('Already been clicked');
+    $(this).addClass('animated shake');
   } else {
   playTurn();
   $(this).text(marker);
   checkForWinner();
   winnerAlert();
+  disableGame();
   resetGame();
 }
 
@@ -97,11 +106,11 @@ $('.square').on('click', function () {
 // TODO:
 //Draw: If all boxes are assigned a value and none of the winning conditions are met, result = draw. DONE!!
 //Stop players from reclicking square: if square already has a value, make it unclickable/alert. DONE!!!
-//If game already won, make all squares unclickable
+//If game already won, make all squares unclickable // DONE!!
 //Display turns: which player is playing
 //Scoring
 
 
 //Test Cases:
-//What if user clicks button again?
-//What if user continues to click on empty squares after the game has been won? -- need to fix. Nothing will happen but what if other play wins? Will show up twice. 
+//What if user clicks button again? // Added anim, stops user from clicking again.
+//What if user continues to click on empty squares after the game has been won? -- need to fix. Nothing will happen but what if other play wins? Will show up twice.

@@ -14,7 +14,6 @@ body {
   margin: 0;
   padding: 0;
   position: relative;
-  z-index: 1;
 }
 
 h1 {
@@ -28,7 +27,7 @@ h1 {
   color: #2572d0;
 }
 
-.gameboard {
+#gameboard {
   background-color: #b782c0;
   max-width: 503px;
   height: 503px;
@@ -52,7 +51,20 @@ h1 {
 .square:hover {
   width: 165px;
   height: 163px;
-  transform: 2s; 
+  transform: 2s;
+}
+
+.NoHover {
+  display: inline-block;
+  background-color: #f2b6c2;
+  width: 164px;
+  height: 164px;
+  margin: 0 auto;
+  overflow: hidden;
+  font-family: 'Londrina Sketch', cursive;
+  font-size: 10em;
+  text-align: center;
+  line-height: 140px;
 }
 
 .winnerAlertBox {
@@ -84,7 +96,7 @@ h1 {
 }
 
 .playAgain {
-  margin: 40px;
+  margin: 20px;
   font-size: 20px;
   background: #8fb3e5;
   background-image: linear-gradient(to bottom, #8fb3e5, #d1a6e7);
@@ -92,7 +104,6 @@ h1 {
   box-shadow: 2px 6px 6px #666666;
   font-family: 'Rubik', sans-serif;
   color: #ffffff;
-  font-size: 20px;
   padding: 10px 20px 10px 20px;
   border: solid #919fc9 2px;
   text-decoration: none;
@@ -102,6 +113,7 @@ h1 {
   background: #d1a6e7 ;
   background-image: linear-gradient(to bottom, #d1a6e7, #8fb3e5);
   text-decoration: none;
+  font-size: 24px;
 }
 
 
