@@ -71,29 +71,36 @@ const winnerAlert = function() {
 const disableGame = function () {
   if (result !== undefined) {
     $('.square').unbind('click'); //make squares unclickable
-    $('#gameboard div').removeClass('square').addClass('NoHover'); //when addressing a class in the remove/add class methods, do not add . in front of class name.
+    $('#gameboard > div').removeClass('square').addClass('NoHover'); //when addressing a class in the remove/add class methods, do not add . in front of class name. Also, #gameboard > div is a DIRECT child selector, meaning it will only select the divs are that direct children of #gameboard and not the chidren of those divs (i.e. grandchildren of #gameboard).
     $('.playAgain').addClass('animated infinite flash'); //playAgain button flashes
   }
 };
+
 const resetGame = function () {
   $('.playAgain').on('click', function() {
     location.reload(true); //reloads the page.
   })
 };
 
-
+$(document).ready(function() {
 $('.square').on('click', function () {
   if (alreadyClicked(this) === true) {
-    console.log('Already been clicked');
-    $(this).addClass('animated shake');
+    //console.log('Already been clicked');
+    const $marker = $(this).find('div'); //adding the div inside 'this' (the .square user clicks on) into a variable. Because if not, 'this' will not work inside the setTimeout function below due to scope issues.
+    $marker.addClass('animated shake');
+    setTimeout(function () {
+      $marker.removeClass('animated shake')
+    }, 1200); //removing the animation class 1.2 secs after it gets added so that it can be readded and so the animation will go off again. Otherwise if it already has the animation class in it, readding it won't do anything.
   } else {
   playTurn();
-  $(this).text(marker);
+  $(this).html(`<div>${marker}</div>`); //to make animation happen on the text inside of the .square, wrapped the text inside .square (the variable marker) in it's own div. Then add the animation class to that div.
   checkForWinner();
   winnerAlert();
   disableGame();
   resetGame();
 }
+
+});
 
 });
 

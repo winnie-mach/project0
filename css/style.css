@@ -10,7 +10,7 @@ body {
   background-image: url("images/bg.jpg");
   background-repeat: repeat;
   width: 100%;
-  height: auto;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
   position: relative;
@@ -36,6 +36,7 @@ h1 {
 }
 
 .square {
+  transition: 0.2s;
   display: inline-block;
   background-color: #f2b6c2;
   width: 164px;
@@ -49,9 +50,8 @@ h1 {
 }
 
 .square:hover {
-  width: 165px;
-  height: 163px;
-  transform: 2s;
+  width: 166px;
+  height: 162px;
 }
 
 .NoHover {
@@ -78,8 +78,8 @@ h1 {
   font-size: 5em;
   font-family: 'Days One', sans-serif;
   letter-spacing: -6px;
-  text-shadow: -1px 0 #9c9896, 0 1px #9c9896, 1px 0 #9c9896, 0 -1px #9c9896;
-  color: #c4c1c0;
+  text-shadow: -1px 0 #746f6d, 0 1px #746f6d, 1px 0 #746f6d, 0 -1px #746f6d;
+  color: #a19e9b; /*#c4c1c0;*/
 
 }
 
@@ -96,7 +96,8 @@ h1 {
 }
 
 .playAgain {
-  margin: 20px;
+  transition: 0.2s all;
+  margin-top: 20px;
   font-size: 20px;
   background: #8fb3e5;
   background-image: linear-gradient(to bottom, #8fb3e5, #d1a6e7);
@@ -106,7 +107,6 @@ h1 {
   color: #ffffff;
   padding: 10px 20px 10px 20px;
   border: solid #919fc9 2px;
-  text-decoration: none;
 }
 
 .playAgain:hover {
@@ -116,7 +116,7 @@ h1 {
   font-size: 24px;
 }
 
-
+/*
 #D4E0FA
 #BCD5F3
 #DDC3E0
@@ -126,3 +126,4 @@ h1 {
 #f68787
 #ff915f
 #e7ad92
+*/
