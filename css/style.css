@@ -35,9 +35,11 @@ h1 {
   left: -10%;
   top: 250px;
   margin: -80px 0px 0px 20px;
+  padding: 10px;
   font-family: 'Rubik', sans-serif;
   color: #f68787;
   font-size: 3em;
+  box-shadow: 8px 8px grey;
 }
 #scoreLogP1 {
   visibility: visible;
@@ -53,6 +55,7 @@ h1 {
   font-family: 'Rubik', sans-serif;
   color: #f68787;
   font-size: 3em;
+  box-shadow: 8px 8px grey;
 }
 #scoreLogP2 {
   visibility: visible;
@@ -68,6 +71,7 @@ h1 {
   font-family: 'Rubik', sans-serif;
   color: #f68787;
   font-size: 3em;
+  box-shadow: 8px 8px grey;
 }
 .style {
   margin: 0;
@@ -152,7 +156,7 @@ h1 {
 .playAgain {
   transition: 0.2s all;
   margin-top: 20px;
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
   font-size: 20px;
   background: #8fb3e5;
   background-image: linear-gradient(to bottom, #8fb3e5, #d1a6e7);
