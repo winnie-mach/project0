@@ -2,6 +2,7 @@ let playerOneisNext = true;
 let marker;
 let turn = 0;
 let result;
+let playerTurn = 'X'
 
 const alreadyClicked = function (squareThatWasClicked) {
   if ($(squareThatWasClicked).text() !== "" ) {
@@ -47,15 +48,25 @@ const playTurn = function () {
   if (playerOneisNext === true) {
     marker = "x";
     playerOneisNext = false;
+    logTurn(turn);
     turn = turn + 1;
-    console.log(turn);
   } else {
     marker = "o";
     playerOneisNext = true;
+    logTurn(turn);
     turn = turn + 1;
-    console.log(turn);
+    return turn;
   } // playerOneisNext = !playerOneisNext could write this instead of the two true + false statements
+};
 
+const logTurn = function(turn){
+  if(turn % 2 !== 0) {
+    playerTurn = 'X';
+    $('#playerTurn').text(playerTurn);
+  } else if(turn % 2 === 0) {
+    playerTurn = 'O';
+    $('#playerTurn').text(playerTurn);
+  }
 };
 
 const winnerAlert = function() {
@@ -83,24 +94,24 @@ const resetGame = function () {
 };
 
 $(document).ready(function() {
-$('.square').on('click', function () {
-  if (alreadyClicked(this) === true) {
-    //console.log('Already been clicked');
-    const $marker = $(this).find('div'); //adding the div inside 'this' (the .square user clicks on) into a variable. Because if not, 'this' will not work inside the setTimeout function below due to scope issues.
-    $marker.addClass('animated shake');
-    setTimeout(function () {
+  logTurn(1);
+  $('.square').on('click', function () {
+    if (alreadyClicked(this) === true) {
+      const $marker = $(this).find('div'); //adding the div inside 'this' (the .square user clicks on) into a variable. Because if not, 'this' will not work inside the setTimeout function below due to scope issues.
+      $marker.addClass('animated shake');
+      setTimeout(function () {
       $marker.removeClass('animated shake')
-    }, 1200); //removing the animation class 1.2 secs after it gets added so that it can be readded and so the animation will go off again. Otherwise if it already has the animation class in it, readding it won't do anything.
-  } else {
-  playTurn();
-  $(this).html(`<div>${marker}</div>`); //to make animation happen on the text inside of the .square, wrapped the text inside .square (the variable marker) in it's own div. Then add the animation class to that div.
-  checkForWinner();
-  winnerAlert();
-  disableGame();
-  resetGame();
-}
+      }, 1200); //removing the animation class 1.2 secs after it gets added so that it can be readded and so the animation will go off again. Otherwise if it already has the animation class in it, readding it won't do anything.
+    } else {
+      playTurn();
+      $(this).html(`<div>${marker}</div>`); //to make animation happen on the text inside of the .square, wrapped the text inside .square (the variable marker) in it's own div. Then add the animation class to that div.
+      checkForWinner();
+      winnerAlert();
+      disableGame();
+      resetGame();
+      }
 
-});
+    });
 
 });
 
@@ -114,10 +125,11 @@ $('.square').on('click', function () {
 //Draw: If all boxes are assigned a value and none of the winning conditions are met, result = draw. DONE!!
 //Stop players from reclicking square: if square already has a value, make it unclickable/alert. DONE!!!
 //If game already won, make all squares unclickable // DONE!!
-//Display turns: which player is playing
+//Display turns: which player is playing // DONE!!
 //Scoring
 
 
 //Test Cases:
-//What if user clicks button again? // Added anim, stops user from clicking again.
-//What if user continues to click on empty squares after the game has been won? -- need to fix. Nothing will happen but what if other play wins? Will show up twice.
+//What if user clicks button again after it has previously been clicked by themselves or other player? // Added anim, stops user from clicking again.
+//If user wins on the 9th move? The logic would mark it as a draw instead of a win. Fixed. Only checked for draw if there was no win recorded.
+//What if user continues to click on empty squares after the game has been won? The squares will continue to be filled with symbols. And if the other player (the one who didn't win) managed to get 3 symbols in a row, then a win will show up twice.
