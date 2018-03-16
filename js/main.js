@@ -115,11 +115,10 @@ const disableGame = function () {
 
 $(document).ready(function() {
   logTurn(1);
-  $('.square').on('click', function () {
+  $('.square').on('click', function () { //this gimungus function will run on user clicking a square class.
     if (gameOver === true) {
       return;
     }
-    console.log("2nd time click")
     if (alreadyClicked(this) === true) {
       const $marker = $(this).find('div'); //adding the div inside 'this' (the .square user clicks on) into a variable. Because if not, 'this' will not work inside the setTimeout function below due to scope issues.
       $marker.addClass('animated shake');
@@ -136,7 +135,7 @@ $(document).ready(function() {
     }
     });
 
-    $('.playAgain').on('click', function() {
+    $('.playAgain').on('click', function() { //this function will run upon user clicking the playAgain class. These functions do not need to be inside a function otherwise I'll have to cal the function.
       //location.reload(true); //reloads the page. Opt to reset manually so my score isn't reset.
       playerOneisNext = true;
       marker = "";
@@ -155,7 +154,6 @@ $(document).ready(function() {
   });
 
 });
-
 
 
 

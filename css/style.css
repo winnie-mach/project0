@@ -166,6 +166,11 @@ h1 {
   color: #ffffff;
   padding: 10px 20px 10px 20px;
   border: solid #919fc9 2px;
+
+}
+
+.playAgain:focus {
+  outline:0; /*gets rid of ugly outline around button when clicked */
 }
 
 .playAgain:hover {
@@ -173,6 +178,17 @@ h1 {
   background-image: linear-gradient(to bottom, #d1a6e7, #8fb3e5);
   text-decoration: none;
   font-size: 24px;
+}
+
+
+@media (max-width: 768px) {
+  #scoreLogP1 {
+    max-width: 220px !important;
+    left: 45% !important;
+    border: 5px solid red;
+  };
+
+
 }
 
 /*
